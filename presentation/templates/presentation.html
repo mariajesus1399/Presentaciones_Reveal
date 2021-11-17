@@ -1,0 +1,227 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <h1>Contenido</h1>
+    <p>Descripción del contenido a mostrar en una presentación típica del curso de Modelos Probabilísticos de Señales y Sistemas</p>
+    <hr />
+    <a href='/home_page'>pagina de inicio</a>
+</section>
+
+<section>
+    <h3>Secciones</h3>
+    <ul>
+        <li>Información estática</li>
+        <li>Gráficas estáticas</li>
+        <li>Gráficas interactivas</li>
+        <li>Animaciones</li>
+        <li>Multimedia</li>
+        <li>Navegación de páginas web</li>
+        <li>Código estático</li>
+        <li>Código interactivo</li>
+        <li>Participación</li>
+    </ul>
+</section>
+<section>
+    <section>
+        <h3>Radio Buttons example</h3>
+        <h4><i class="fas fa-bookmark"></i></h4>
+        <p>Seleccione su color favorito</p>
+        <form action="" method="POST">{% csrf_token %}
+            <p>
+                <input hidden id="user" name="user" value={{user.username}}><br>
+                <input type="radio" id="color1" name="color" value="Rojo">
+                <label for="color1"> Rojo </label><br>
+                <input type="radio" id="color2" name="color" value="Azul">
+                <label for="color2"> Azul </label><br>
+                <input type="radio" id="color3" name="color" value="Verde">
+                <label for="color3"> Verde </label>
+            </p>
+
+            <p>
+                <button type="submit" value="Submit">submit </button> 
+            </p>
+            
+        </form> 
+    </section>
+    <section>
+        <h3>Radio Buttons example</h3>
+        <h4><i class="fas fa-bookmark"></i></h4>
+        <p>La respuesta del usuario {{respuesta.user}} es: {{respuesta.color}}</p>
+    </section>
+</section>    
+<section>
+    <section>
+        <h3>Range Field</h3>
+        <h4><i class="fas fa-bookmark"></i></h4>
+        <p>Escoja un rango deceado de Volumen</p>
+        <form action="" method="POST">{% csrf_token %}
+            <input hidden id="user" name="user" value={{user.username}}><br>
+                <label for="vol">Volumen (Entre 0 y 50):</label>
+                <input type="range" id="vol" name="vol" min="0" max="50">
+            <p>
+                <button type="submit" value="Submit">submit </button> 
+            </p>
+            
+        </form> 
+    </section>
+    <section>
+        <h3>Range Field example</h3>
+        <h4><i class="fas fa-bookmark"></i></h4>
+        <p>La respuesta del usuario</p>{{respuesta.user}}<p> es: {{respuesta.vol}}</p>
+    </section>
+</section>
+<section>
+    <section>
+        <h3>Información estática</h3>
+        <h4><i class="fas fa-bookmark"></i></h4>
+        <p>Distintos tipos de contenido que puede mostrar.</p>
+    </section>
+    <section>
+        <h3>Ecuaciones</h3>
+        \[
+            f_X(x) = \lambda e^{-\lambda x}
+        \]
+    </section>
+    <section>
+        <h3>Tablas</h3>
+        <p>Aquí un ejemplo de tabla</p>
+    </section>
+    <section>
+        <h3>Definiciones</h3>
+        <blockquote>
+            Sea $X$ una variable aleatoria con función de densidad dada por:
+            \begin{equation}
+                f_X(x) = x + y + z
+            \end{equation}
+        </blockquote>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Gráficas estáticas</h3>
+        <h4><i class="fas fa-images"></i></h4>
+        <p>Generadas en Python u otros e importadas aquí.</p>
+    </section>
+    <section>
+        <h3>SVG</h3>
+        {% load static %}
+        <img src="{% static 'PDF.svg' %}">
+    </section>
+    <section>
+        <h3>PNG</h3>
+    
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Gráficas interactivas</h3>
+        <h4><i class="fas fa-images"></i></h4>
+        <p>Lorem ipsum dolor sit amet.</p>    
+    </section>
+    <section>
+        <h3>Matplotlib</h3>
+    
+    </section>
+    <section>
+        <h3>Bokeh</h3>
+    
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Animaciones</h3>
+        <h4><i class="fas fa-exclamation"></i></h4>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </section>
+    <section>
+        <h3>GIF</h3>
+    
+    </section>
+    <section>
+        <h3>Matplotlib</h3>
+    
+    </section>
+    <section>
+        <h3>Manim</h3>
+    
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Multimedia</h3>
+        <h4><i class="fas fa-photo-video"></i></h4>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </section>
+    <section>
+        <h3>Audio</h3>
+
+    </section>
+    <section>
+        <h3>Video</h3>
+
+    </section>
+</section>
+
+
+<section>
+    <h3>Navegación de páginas web</h3>
+    <h4><i class="fas fa-window-restore"></i></h4>
+    <p>Con <code>iframe</code> es posible mostrar fragmentos o páginas completas.</p>
+</section>
+
+<section>
+    <section>
+        <h3>Código estático</h3>
+        <h4><i class="fas fa-code"></i></h4>
+        <p>Visualización de segmentos de código.</p>
+    </section>
+    <section>
+        <h3>Código con formato</h3>
+        <pre data-id="code-animation"><code class="python" data-trim data-line-numbers>
+            import numpy as np
+            from scipy import stats
+            import matplotlib.pyplot as plt
+
+            # Repeticiones
+            N = 500
+
+            # Distribución de X
+            X = stats.uniform(0, 1)
+        </code></pre>
+    </section>
+    <section data-background-iframe="https://view.datalore.jetbrains.com/notebook/8tuDM4WOzATFN9vLFLaUky?force_sso=true" data-background-interactive>
+        <h3>Notebooks de Jupyter con Datalore</h3>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Código interactivo</h3>
+        <h4><i class="fas fa-laptop-code"></i></h4>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </section>
+    <section>
+        <h3>Repl.it</h3>
+        <iframe height="400px" width="100%" src="https://repl.it/@fabianabarca/TransformacionRaizCuadrada?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+    </section>
+</section>
+
+<section>
+    <h3>Participación</h3>
+    <h4><i class="fas fa-tasks"></i></h4>
+    <p>Lorem ipsum dolor sit amet.</p>
+</section>
+
+<section>
+    <h3></h3>
+
+</section>
+
+{% endblock %}

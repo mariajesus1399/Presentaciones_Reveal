@@ -1,0 +1,83 @@
+{% load static %}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Prueba de reveal.js</title>
+
+
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/blood.min.css" id="theme">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">-
+		<!--<link rel="stylesheet" type="text/css" href="{% static '/dist/reset.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'dist/reveal.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'dist/theme/blood.css' %}" id="theme">
+		<link rel="stylesheet" href="{% static 'plugin/highlight/monokai.css' %}" id="highlight-theme">-->
+		<style>
+			.usuario{
+				position: top;
+				text-align: right;
+				font-size: small;		
+			}
+		</style>
+		<script src="https://kit.fontawesome.com/1ae7c4e024.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        
+        <div class="reveal">
+			<div class="slides">
+				<div class="usuario">Bienvenido </b>{{request.user.username}}</b></div>
+				{% block content %}
+                    <!-- Aquí el contenido de cada presentación -->
+				{% endblock %}
+
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/notes/notes.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/math/math.min.js"></script>
+
+		<!-- 
+		<script src="{% static 'dist/reveal.js' %}"></script>
+		<script src="{% static 'plugin/notes/notes.js' %}"></script>
+		<script src="{% static 'plugin/markdown/markdown.js' %}"></script>
+        <script src="{% static 'plugin/highlight/highlight.js' %}"></script>
+        <script src="{% static 'plugin/math/math.js' %}"></script>
+		-->
+		<script>
+		
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+                math: {
+                    mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+                    config: 'TeX-AMS_HTML-full',
+                },
+
+				multiplex: {
+					// Example values. To generate your own, see the socket.io server instructions.
+					secret: null, // null so the clients do not have control of the master presentation
+					id: 'a043701b2cd7d39e', // id, obtained from socket.io server
+					url: 'https://reveal-multiplex.glitch.me/' // Location of socket.io server
+				},
+				// Don't forget to add the dependencies
+				dependencies: [
+				    { src: 'https://reveal-multiplex.glitch.me/socket.io/socket.io.js', async: true },
+				    { src: 'https://reveal-multiplex.glitch.me/master.js', async: true },
+				    { src: 'https://reveal-multiplex.glitch.me/client.js', async: true },
+					// and if you want speaker notes
+				],				
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
